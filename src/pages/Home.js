@@ -73,16 +73,29 @@ const Home = ({ user }) => {
       setRecoveryToken={setRecoveryToken}
     />
   ) : (
-    <div className={"position-fixed d-flex flex-column  "}>
-      <header className={"d-flex justify-content-between items-center px-4"}>
-        <span className={"text-white"}>Cred List.</span>
-      </header>
+    <div className={"position-fixed d-flex flex-column mt-5"}>
+      <div className={"d-flex m-4 mt-0 h-10"}>
+        <input
+          ref={newCredentialTextRef}
+          type="text"
+          onKeyUp={(e) => e.key === "Enter" && addCred()}
+          className={"px-2 mr-4"}
+        />
+        <button
+          onClick={addCred}
+          className={
+            "d-flex btn btn-primary text-dark justify-content-center py-2 px-4 text-white"
+          }
+        >
+          Add
+        </button>
+      </div>
       <div
-        className={"flex flex-col flex-grow p-4"}
+        className={"d-flex flex-column  p-4"}
         style={{ height: "calc(100vh - 11.5rem)" }}
       >
         <div
-          className={`p-2 border flex-grow grid gap-2 ${
+          className={`p-2 flex-grow grid ${
             creds.length ? "auto-rows-min" : ""
           } grid-cols-1 h-2/3 overflow-y-scroll first:mt-8`}
         >
@@ -95,7 +108,9 @@ const Home = ({ user }) => {
               />
             ))
           ) : (
-            <span className={"h-full flex justify-center items-center"}>
+            <span
+              className={"d-flex justify-content-center align-items-center"}
+            >
               You do have any credential yet!
             </span>
           )}
@@ -109,22 +124,6 @@ const Home = ({ user }) => {
             {errorText}
           </div>
         )}
-      </div>
-      <div className={"flex m-4 mt-0 h-10"}>
-        <input
-          ref={newCredentialTextRef}
-          type="text"
-          onKeyUp={(e) => e.key === "Enter" && addCred()}
-          className={"bg-gray-200 border px-2 border-gray-300 w-full mr-4"}
-        />
-        <button
-          onClick={addCred}
-          className={
-            "flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out"
-          }
-        >
-          Add
-        </button>
       </div>
     </div>
   );

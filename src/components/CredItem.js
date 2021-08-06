@@ -17,29 +17,27 @@ const CredItem = ({ cred, onDelete }) => {
   };
 
   return (
-    <div className={"p-3 max-h-14 flex align-center justify-between border"}>
-      <span className={"truncate flex-grow"}>
+    <div className={"p-3 d-flex align-items-center justify-content-between "}>
+      <span className={"form-group d-flex align-items-center "}>
         <input
-          className="cursor-pointer mr-2"
+          className="form-check-input p-2 m-3"
           onChange={toggleCompleted}
           type="checkbox"
           checked={isCompleted ? true : ""}
         />
-        <span
-          className={`w-full flex-grow ${isCompleted ? "line-through" : ""}`}
-        >
+        <span className={`ml-5 ${isCompleted ? "line-through" : ""}`}>
           {cred.credential}
         </span>
       </span>
       <button
-        className={"font-mono text-red-500 text-xl border px-2"}
+        className={"btn btn-danger badge-pill text-white px-2"}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
           onDelete();
         }}
       >
-        X
+        x
       </button>
     </div>
   );

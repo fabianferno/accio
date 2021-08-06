@@ -20,7 +20,7 @@ export default function BaseLayout(props) {
           </button>
         </div>
       </section>
-      {props.children}
+      <div className="d-flex justify-content-center ">{props.children}</div>
     </>
   );
 }
