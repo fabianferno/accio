@@ -2,12 +2,18 @@ import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/api";
 import RecoverPassword from "../components/RecoverPassword";
 import CredItem from "../components/CredItem";
+import { encodeJSON } from "../lib/utilities";
 
 const Home = ({ user }) => {
   const [recoveryToken, setRecoveryToken] = useState(null);
   const [creds, setCreds] = useState([]);
-  const newCredentialTextRef = useRef();
   const [errorText, setError] = useState("");
+
+  const newCredentialPassTextRef = useRef();
+  const newCredentialUserTextRef = useRef();
+  const newCredentialPortTextRef = useRef();
+  const newCredentialHostTextRef = useRef();
+  const newCredentialServiceTextRef = useRef();
 
   useEffect(() => {
     /* Recovery url is of the form
@@ -49,20 +55,42 @@ const Home = ({ user }) => {
   };
 
   const addCred = async () => {
-    let credentialText = newCredentialTextRef.current.value;
-    let credential = credentialText.trim();
-    if (credential.length <= 3) {
-      setError("Credential length should be more than 3!");
+    let credentialPass = newCredentialPassTextRef.current.value.trim();
+    let credentialUser = newCredentialUserTextRef.current.value.trim();
+    let credentialPort = newCredentialPortTextRef.current.value.trim();
+    let credentialHost = newCredentialHostTextRef.current.value.trim();
+    let credentialService = newCredentialServiceTextRef.current.value.trim();
+    let credential = {
+      service: credentialService,
+      host: credentialHost,
+      port: credentialPort,
+      user: credentialUser,
+      pass: credentialPass,
+    };
+
+    if (
+      credentialService === "" ||
+      credentialHost === "" ||
+      credentialUser === "" ||
+      credentialPass === ""
+    ) {
+      setError("Incomplete Credentials");
     } else {
+      let encodedCred = encodeJSON(credential, supabase.auth.user().id);
+
       let { data: cred, error } = await supabase
         .from("creds")
-        .insert({ credential, user_id: user.id })
+        .insert({ credential: encodedCred, user_id: user.id })
         .single();
       if (error) setError(error.message);
       else {
         setCreds([cred, ...creds]);
         setError(null);
-        newCredentialTextRef.current.value = "";
+        newCredentialServiceTextRef.current.value = "";
+        newCredentialHostTextRef.current.value = "";
+        newCredentialPortTextRef.current.value = "";
+        newCredentialUserTextRef.current.value = "";
+        newCredentialPassTextRef.current.value = "";
       }
     }
   };
@@ -74,20 +102,52 @@ const Home = ({ user }) => {
     />
   ) : (
     <div className={"position-fixed d-flex flex-column mt-5"}>
-      <div className={"d-flex m-4 mt-0 h-10"}>
-        <input
-          ref={newCredentialTextRef}
-          type="text"
-          onKeyUp={(e) => e.key === "Enter" && addCred()}
-          className={"px-2 mr-4"}
-        />
+      <div className="bg-success p-4">
+        <div className={"d-flex"}>
+          <input
+            ref={newCredentialServiceTextRef}
+            type="text"
+            placeholder="Service"
+            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            className={"py-3 text-center bg-dark text-white"}
+          />
+          <input
+            ref={newCredentialHostTextRef}
+            type="text"
+            placeholder="Host"
+            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            className={"py-3 text-center bg-dark text-white"}
+          />
+          <input
+            ref={newCredentialPortTextRef}
+            type="text"
+            placeholder="Port"
+            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            className={"py-3 text-center bg-dark text-white"}
+          />
+          <input
+            ref={newCredentialUserTextRef}
+            type="text"
+            placeholder="User"
+            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            className={"py-3 text-center bg-dark text-white"}
+          />
+          <input
+            ref={newCredentialPassTextRef}
+            type="password"
+            placeholder="Password"
+            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            className={"py-3 text-center bg-dark text-white"}
+          />
+        </div>
         <button
           onClick={addCred}
           className={
-            "d-flex btn btn-primary text-dark justify-content-center py-2 px-4 text-white"
+            "d-flex btn btn-block btn-primary text-dark justify-content-center py-2 px-4 text-white"
           }
+          style={{ width: "100%" }}
         >
-          Add
+          Store +
         </button>
       </div>
       <div
@@ -111,7 +171,7 @@ const Home = ({ user }) => {
             <span
               className={"d-flex justify-content-center align-items-center"}
             >
-              You do have any credential yet!
+              You do not have any credentials yet!
             </span>
           )}
         </div>

@@ -10,3 +10,5 @@ function decodeJSON(encodedString, key) {
   var bytes = CryptoJS.AES.decrypt(encodedString, key);
   return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 }
+
+module.exports = { encodeJSON, decodeJSON };

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../lib/api";
+import { decodeJSON } from "../lib/utilities";
 
 const CredItem = ({ cred, onDelete }) => {
   const [isCompleted, setIsCompleted] = useState(cred.is_complete);
@@ -26,7 +27,7 @@ const CredItem = ({ cred, onDelete }) => {
           checked={isCompleted ? true : ""}
         />
         <span className={`ml-5 ${isCompleted ? "line-through" : ""}`}>
-          {cred.credential}
+          {JSON.stringify(decodeJSON(cred.credential, supabase.auth.user().id))}
         </span>
       </span>
       <button
