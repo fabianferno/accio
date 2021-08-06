@@ -61,11 +61,16 @@ const Auth = () => {
     >
       <form>
         <h1
-          className="font-weight-bold text-primary mb-5"
+          className="font-weight-bold text-primary mb-3"
           style={{ fontSize: "5rem", fontWeight: "bold" }}
         >
-          <img src={logo} className="logo-auth" alt="" srcset="" /> accio&trade;
+          <img src={logo} height={80} alt="" srcset="" className="pb-2" />{" "}
+          accio&trade;
         </h1>
+
+        <p className="mb-5">
+          a <strong>developer</strong> friendly credential manager.
+        </p>
 
         <input
           type="email"

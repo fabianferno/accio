@@ -5,10 +5,10 @@
 }
 
 .login-card {
-    height: 400px;
-    width: 350px;
+    height: 380px;
+    width: 320px;
     position: relative;
-    border-radius: 31px;
+    border-radius: 30px;
     background: #f0d2d2;
     box-shadow: 10px 10px 25px #00000025, -10px -10px 25px #ffeaead0;
 }
@@ -21,7 +21,7 @@
 
 .login-img {
     background-color: rgb(255, 131, 131);
-    border-radius: 50%;
+    border-radius: 60%;
 }
 
 .login-icons {
@@ -41,7 +41,7 @@
 }
 
 .details>p {
-    font-size: 20px;
+    font-size: 1.1rem;
     margin-bottom: 15px;
 }
 
