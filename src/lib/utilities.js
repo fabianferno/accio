@@ -1,14 +1,17 @@
+import { supabase } from "../lib/api";
+
 var CryptoJS = require("crypto-js");
 
-function encodeJSON(data, key) {
+export function encodeJSON(data) {
   // Encrypt
-  return CryptoJS.AES.encrypt(JSON.stringify(data), key).toString();
+  return CryptoJS.AES.encrypt(
+    JSON.stringify(data),
+    supabase.auth.user().id
+  ).toString();
 }
 
-function decodeJSON(encodedString, key) {
+export function decodeJSON(encodedString) {
   // Decrypt
-  var bytes = CryptoJS.AES.decrypt(encodedString, key);
+  var bytes = CryptoJS.AES.decrypt(encodedString, supabase.auth.user().id);
   return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 }
-
-module.exports = { encodeJSON, decodeJSON };

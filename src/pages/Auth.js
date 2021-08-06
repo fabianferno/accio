@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { supabase } from "../lib/api";
-
+import logo from "../assets/img/accio.svg";
 import { SocialIcon } from "react-social-icons";
 
 const Auth = () => {
@@ -61,11 +61,12 @@ const Auth = () => {
     >
       <form>
         <h1
-          className="font-weight-bold text-success mb-5"
+          className="font-weight-bold text-primary mb-5"
           style={{ fontSize: "5rem", fontWeight: "bold" }}
         >
-          accio&trade;
+          <img src={logo} className="logo-auth" alt="" srcset="" /> accio&trade;
         </h1>
+
         <input
           type="email"
           id="inputEmail"

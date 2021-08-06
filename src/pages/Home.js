@@ -2,7 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/api";
 import RecoverPassword from "../components/RecoverPassword";
 import CredItem from "../components/CredItem";
-import { encodeJSON } from "../lib/utilities";
+import { encodeJSON, decodeJSON } from "../lib/utilities";
+import { motion } from "framer-motion";
 
 const Home = ({ user }) => {
   const [recoveryToken, setRecoveryToken] = useState(null);
@@ -14,6 +15,8 @@ const Home = ({ user }) => {
   const newCredentialPortTextRef = useRef();
   const newCredentialHostTextRef = useRef();
   const newCredentialServiceTextRef = useRef();
+
+  const searchCredentialTextRef = useRef();
 
   useEffect(() => {
     /* Recovery url is of the form
@@ -43,6 +46,27 @@ const Home = ({ user }) => {
       .order("id", { ascending: false });
     if (error) console.log("error", error);
     else setCreds(creds);
+  };
+
+  const searchCred = async () => {
+    let { data: creds, error } = await supabase
+      .from("creds")
+      .select("*")
+      .order("id", { ascending: false });
+
+    let resultCreds = [];
+    for (let cred of creds) {
+      if (
+        JSON.stringify(decodeJSON(cred.credential))
+          .toLowerCase()
+          .indexOf(
+            searchCredentialTextRef.current.value.trim().toLowerCase()
+          ) !== -1
+      ) {
+        resultCreds.push(cred);
+      }
+    }
+    setCreds(resultCreds);
   };
 
   const deleteCred = async (id) => {
@@ -76,11 +100,9 @@ const Home = ({ user }) => {
     ) {
       setError("Incomplete Credentials");
     } else {
-      let encodedCred = encodeJSON(credential, supabase.auth.user().id);
-
       let { data: cred, error } = await supabase
         .from("creds")
-        .insert({ credential: encodedCred, user_id: user.id })
+        .insert({ credential: encodeJSON(credential), user_id: user.id })
         .single();
       if (error) setError(error.message);
       else {
@@ -101,64 +123,82 @@ const Home = ({ user }) => {
       setRecoveryToken={setRecoveryToken}
     />
   ) : (
-    <div className={"position-fixed d-flex flex-column mt-5"}>
-      <div className="bg-success p-4">
+    <div className={"d-flex flex-column "}>
+      <div className="card card-body shadow rounded">
         <div className={"d-flex"}>
-          <input
+          <motion.input
+            whileHover={{ width: 400 }}
+            whileFocus={{ scale: 1.2 }}
             ref={newCredentialServiceTextRef}
             type="text"
             placeholder="Service"
             onKeyUp={(e) => e.key === "Enter" && addCred()}
-            className={"py-3 text-center bg-dark text-white"}
+            className={"p-3  bg-dark text-white"}
           />
-          <input
+          <motion.input
+            whileHover={{ width: 400 }}
+            whileFocus={{ scale: 1.2 }}
             ref={newCredentialHostTextRef}
             type="text"
             placeholder="Host"
             onKeyUp={(e) => e.key === "Enter" && addCred()}
-            className={"py-3 text-center bg-dark text-white"}
+            className={"p-3 bg-dark text-white"}
           />
-          <input
+          <motion.input
+            whileHover={{ width: 400 }}
+            whileFocus={{ scale: 1.2 }}
             ref={newCredentialPortTextRef}
             type="text"
             placeholder="Port"
             onKeyUp={(e) => e.key === "Enter" && addCred()}
-            className={"py-3 text-center bg-dark text-white"}
+            className={"p-3 bg-dark text-white"}
           />
-          <input
+          <motion.input
+            whileHover={{ width: 400 }}
+            whileFocus={{ scale: 1.2 }}
             ref={newCredentialUserTextRef}
             type="text"
             placeholder="User"
             onKeyUp={(e) => e.key === "Enter" && addCred()}
-            className={"py-3 text-center bg-dark text-white"}
+            className={"p-3  bg-dark text-white"}
           />
-          <input
+          <motion.input
+            whileHover={{ width: 400 }}
+            whileFocus={{ scale: 1.2 }}
             ref={newCredentialPassTextRef}
             type="password"
             placeholder="Password"
             onKeyUp={(e) => e.key === "Enter" && addCred()}
-            className={"py-3 text-center bg-dark text-white"}
+            className={"p-3   bg-dark text-white"}
           />
         </div>
+
         <button
           onClick={addCred}
           className={
-            "d-flex btn btn-block btn-primary text-dark justify-content-center py-2 px-4 text-white"
+            "d-flex btn btn-block btn-danger text-dark justify-content-center py-2 px-4"
           }
           style={{ width: "100%" }}
         >
           Store +
         </button>
+
+        <div className="d-flex align-items-center mt-3">
+          <motion.input
+            whileHover={{ height: 100 }}
+            whileFocus={{ scale: 1.2 }}
+            ref={searchCredentialTextRef}
+            type="text"
+            placeholder="Search for Credentials"
+            onKeyUp={(e) => e.key === "Enter" && searchCred()}
+            className={"p-3 d-flex bg-dark text-white rounded"}
+            style={{ width: "100%" }}
+            onChange={searchCred}
+          />
+        </div>
       </div>
-      <div
-        className={"d-flex flex-column  p-4"}
-        style={{ height: "calc(100vh - 11.5rem)" }}
-      >
-        <div
-          className={`p-2 flex-grow grid ${
-            creds.length ? "auto-rows-min" : ""
-          } grid-cols-1 h-2/3 overflow-y-scroll first:mt-8`}
-        >
+      <div className={"d-flex flex-column  p-4"}>
+        <div className={`d-flex`}>
           {creds.length ? (
             creds.map((cred) => (
               <CredItem
