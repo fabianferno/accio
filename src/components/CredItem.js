@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { supabase } from "../lib/api";
 
-const TodoItem = ({ todo, onDelete }) => {
-  const [isCompleted, setIsCompleted] = useState(todo.is_complete);
+const CredItem = ({ cred, onDelete }) => {
+  const [isCompleted, setIsCompleted] = useState(cred.is_complete);
 
   const toggleCompleted = async () => {
     const { data, error } = await supabase
-      .from("todos")
+      .from("creds")
       .update({ is_complete: !isCompleted })
-      .eq("id", todo.id)
+      .eq("id", cred.id)
       .single();
     if (error) {
       console.error(error);
@@ -28,7 +28,7 @@ const TodoItem = ({ todo, onDelete }) => {
         <span
           className={`w-full flex-grow ${isCompleted ? "line-through" : ""}`}
         >
-          {todo.task}
+          {cred.credential}
         </span>
       </span>
       <button
@@ -45,4 +45,4 @@ const TodoItem = ({ todo, onDelete }) => {
   );
 };
 
-export default TodoItem;
+export default CredItem;

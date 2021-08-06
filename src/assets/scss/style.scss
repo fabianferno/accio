@@ -14,9 +14,6 @@ $theme-colors: ("primary": #3500D3,
 @import "~bootstrap/scss/bootstrap";
 
 
-//@import "/src/assets/fonts/fonts.css";
-//@import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
-
 * {
     box-sizing: border-box;
 }
@@ -33,13 +30,11 @@ body {
 /* Code for Selection Text */
 ::-moz-selection {
     background: map.get($theme-colors, "primary");
-
     color: map.get($theme-colors, "white");
 }
 
 ::selection {
     background: map.get($theme-colors, "primary");
-
     color: map.get($theme-colors, "white");
 }
 
@@ -71,9 +66,6 @@ a {
     transition: 0.5s ease;
 }
 
-.hover-box:hover {
-    background-size: 0%;
-}
 
 h1 {
     color: map.get($theme-colors, "primary");
@@ -101,5 +93,4 @@ img.dark-shadow {
 
 .no-select {
     user-select: none;
-    /* Standard */
 }

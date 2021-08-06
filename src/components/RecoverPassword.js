@@ -11,7 +11,7 @@ const RecoverPassword = ({ token, setRecoveryToken }) => {
     });
 
     if (!error) {
-      // To render our Todo list again
+      // To render our Cred list again
       setRecoveryToken(null);
     } else {
       console.error(error);

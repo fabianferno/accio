@@ -35,7 +35,7 @@ const Auth = () => {
   const forgotPassword = async (e) => {
     // Read more on https://supabase.io/docs/reference/javascript/reset-password-email#notes
     e.preventDefault();
-    const email = prompt("Please enter your email:");
+    const email = emailRef.current?.value;
 
     if (email === null || email === "") {
       setHelperText({ error: true, text: "You must enter your email." });
@@ -57,26 +57,22 @@ const Auth = () => {
       className={"p-5 shadow d-flex justify-content-center mt-5 text-center"}
     >
       <form className="form-signin">
-        <h1 className="font-weight-bold text-white mb-5">accio</h1>
-        <h4 className="h3 mb-3 text-success font-weight-normal">
-          Please sign in
-        </h4>
-        <label for="inputEmail" className="sr-only mb-2">
-          Email
-        </label>
+        <h1
+          className="font-weight-bold text-success mb-5"
+          style={{ fontSize: "5rem", fontWeight: "bold" }}
+        >
+          accio
+        </h1>
         <input
           type="email"
           id="inputEmail"
           className="form-control mb-4"
           placeholder="Email address"
           required
-          autofocus
+          autoFocus
           name={"email"}
           ref={emailRef}
         />
-        <label for="inputPassword" className="sr-only mb-2">
-          Password
-        </label>
         <input
           type="password"
           id="inputPassword"
@@ -89,7 +85,7 @@ const Auth = () => {
         <div className="mb-3 d-flex justify-content-center">
           <button
             onClick={() => handleLogin("LOGIN")}
-            className="btn btn-primary "
+            className="btn btn-primary btn-lg mx-2"
             type="submit"
           >
             Sign in
@@ -97,7 +93,7 @@ const Auth = () => {
           <button
             type="submit"
             onClick={() => handleLogin("REGISTER").catch(console.error)}
-            className="btn  btn-secondary"
+            className="btn btn-dark btn-lg mx-2"
           >
             Sign Up
           </button>
@@ -106,11 +102,11 @@ const Auth = () => {
           Forgot Password?
         </span>
 
-        <div className="d-flex mt-5">
+        <div className="mt-5">
           <button
             onClick={() => handleOAuthLogin("github")}
             type="button"
-            className="btn btn-dark py-2 px-4  text-white"
+            className="btn btn-dark btn-block py-2 px-4  text-white"
           >
             GitHub
           </button>
@@ -118,7 +114,7 @@ const Auth = () => {
           <button
             onClick={() => handleOAuthLogin("discord")}
             type="button"
-            className="btn btn-success py-2 px-4  text-dark"
+            className="btn btn-success btn-block py-2 px-4  text-dark"
           >
             Discord
           </button>
