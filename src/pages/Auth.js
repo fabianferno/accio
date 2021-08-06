@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { supabase } from "../lib/api";
 
+import { SocialIcon } from "react-social-icons";
+
 const Auth = () => {
   const [helperText, setHelperText] = useState({ error: null, text: null });
   const emailRef = useRef();
@@ -54,19 +56,20 @@ const Auth = () => {
 
   return (
     <div
-      className={"p-5 shadow d-flex justify-content-center mt-5 text-center"}
+      style={{ minHeight: "100vh" }}
+      className="d-flex justify-content-center align-items-center text-center"
     >
-      <form className="form-signin">
+      <form>
         <h1
           className="font-weight-bold text-success mb-5"
           style={{ fontSize: "5rem", fontWeight: "bold" }}
         >
-          accio
+          accio&trade;
         </h1>
         <input
           type="email"
           id="inputEmail"
-          className="form-control mb-4"
+          className="form-control bg-dark text-white mb-4 py-3"
           placeholder="Email address"
           required
           autoFocus
@@ -76,7 +79,7 @@ const Auth = () => {
         <input
           type="password"
           id="inputPassword"
-          className="form-control mb-4"
+          className="form-control bg-dark text-white mb-4 py-3"
           placeholder="Password"
           required
           name={"password"}
@@ -102,22 +105,30 @@ const Auth = () => {
           Forgot Password?
         </span>
 
-        <div className="mt-5">
-          <button
-            onClick={() => handleOAuthLogin("github")}
-            type="button"
-            className="btn btn-dark btn-block py-2 px-4  text-white"
-          >
-            GitHub
-          </button>
+        <hr className="mt-5 " />
 
-          <button
-            onClick={() => handleOAuthLogin("discord")}
-            type="button"
-            className="btn btn-success btn-block py-2 px-4  text-dark"
-          >
-            Discord
-          </button>
+        <span className="text-center texh-white mt-3">Log In with</span>
+        <div className="mt-3 d-flex">
+          <div className="mx-3" onClick={() => handleOAuthLogin("github")}>
+            <SocialIcon network="github" fgColor="#ffffff" bgColor="#211F1F" />
+            <span className="btn social-pill mr-5 font-weight-bold text-capitalize">
+              Github
+            </span>
+          </div>
+
+          <div className="mx-3" onClick={() => handleOAuthLogin("google")}>
+            <SocialIcon network="google" fgColor="#ffffff" bgColor="#DE5246" />
+            <span className="btn social-pill mr-5 font-weight-bold">
+              Google
+            </span>
+          </div>
+
+          <div className="mx-3" onClick={() => handleOAuthLogin("discord")}>
+            <SocialIcon network="discord" fgColor="#ffffff" bgColor="#5865F2" />
+            <span className="btn social-pill mr-5 font-weight-bold">
+              Discord
+            </span>
+          </div>
         </div>
         {!!helperText.text && (
           <div

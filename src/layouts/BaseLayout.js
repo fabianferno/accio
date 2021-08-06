@@ -20,7 +20,12 @@ export default function BaseLayout(props) {
           </button>
         </div>
       </section>
-      <div className="d-flex justify-content-center ">{props.children}</div>
+      <div
+        style={{ minHeight: "100vh" }}
+        className="d-flex justify-content-center align-items-center"
+      >
+        {props.children}
+      </div>
     </>
   );
 }
