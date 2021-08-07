@@ -64,8 +64,7 @@ const Auth = () => {
           className="font-weight-bold text-primary mb-3"
           style={{ fontSize: "5rem", fontWeight: "bold" }}
         >
-          <img src={logo} height={80} alt="" srcset="" className="pb-2" />{" "}
-          accio&trade;
+          <img src={logo} height={80} alt="" srcSet="" className="pb-2" /> accio
         </h1>
 
         <p className="mb-5">
@@ -113,7 +112,7 @@ const Auth = () => {
 
         <hr className="mt-5 " />
 
-        <span className="text-center texh-white mt-3">Log In with</span>
+        <span className="text-center texh-white mt-3">or Log In with</span>
         <div className="mt-3 d-flex">
           <div className="mx-3" onClick={() => handleOAuthLogin("github")}>
             <SocialIcon network="github" fgColor="#ffffff" bgColor="#211F1F" />

@@ -2,12 +2,13 @@ import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/api";
 import RecoverPassword from "../components/RecoverPassword";
 import CredItem from "../components/CredItem";
-import { encodeJSON, decodeJSON } from "../lib/utilities";
+import { encryptJSON, decryptJSON } from "../lib/utilities";
 import { motion } from "framer-motion";
 
 const Home = ({ user }) => {
   const [recoveryToken, setRecoveryToken] = useState(null);
   const [creds, setCreds] = useState([]);
+  const [currentCredId, setCurrentCredId] = useState(null);
   const [errorText, setError] = useState("");
 
   const newCredentialPassTextRef = useRef();
@@ -17,6 +18,8 @@ const Home = ({ user }) => {
   const newCredentialServiceTextRef = useRef();
 
   const searchCredentialTextRef = useRef();
+
+  const storeButtonRef = useRef();
 
   useEffect(() => {
     /* Recovery url is of the form
@@ -57,7 +60,7 @@ const Home = ({ user }) => {
     let resultCreds = [];
     for (let cred of creds) {
       if (
-        JSON.stringify(decodeJSON(cred.credential))
+        JSON.stringify(decryptJSON(cred.credential))
           .toLowerCase()
           .indexOf(
             searchCredentialTextRef.current.value.trim().toLowerCase()
@@ -78,41 +81,107 @@ const Home = ({ user }) => {
     }
   };
 
-  const addCred = async () => {
-    let credentialPass = newCredentialPassTextRef.current.value.trim();
-    let credentialUser = newCredentialUserTextRef.current.value.trim();
-    let credentialPort = newCredentialPortTextRef.current.value.trim();
-    let credentialHost = newCredentialHostTextRef.current.value.trim();
-    let credentialService = newCredentialServiceTextRef.current.value.trim();
-    let credential = {
-      service: credentialService,
-      host: credentialHost,
-      port: credentialPort,
-      user: credentialUser,
-      pass: credentialPass,
-    };
+  const editCred = async (id) => {
+    let { data: creds, error } = await supabase
+      .from("creds")
+      .select("*")
+      .eq("id", id);
+    if (error) console.log("error", error);
 
-    if (
-      credentialService === "" ||
-      credentialHost === "" ||
-      credentialUser === "" ||
-      credentialPass === ""
-    ) {
-      setError("Incomplete Credentials");
+    newCredentialPassTextRef.current.value = decryptJSON(
+      creds[0].credential
+    ).pass;
+    newCredentialUserTextRef.current.value = decryptJSON(
+      creds[0].credential
+    ).user;
+    newCredentialPortTextRef.current.value = decryptJSON(
+      creds[0].credential
+    ).port;
+    newCredentialHostTextRef.current.value = decryptJSON(
+      creds[0].credential
+    ).host;
+    newCredentialServiceTextRef.current.value = decryptJSON(
+      creds[0].credential
+    ).service;
+
+    setCurrentCredId(id);
+  };
+
+  const updateCred = async () => {
+    if (currentCredId !== null) {
+      //console.log(id);
+      let credentialPass = newCredentialPassTextRef.current.value.trim();
+      let credentialUser = newCredentialUserTextRef.current.value.trim();
+      let credentialPort = newCredentialPortTextRef.current.value.trim();
+      let credentialHost = newCredentialHostTextRef.current.value.trim();
+      let credentialService = newCredentialServiceTextRef.current.value.trim();
+      let credential = {
+        service: credentialService,
+        host: credentialHost,
+        port: credentialPort,
+        user: credentialUser,
+        pass: credentialPass,
+      };
+
+      if (
+        credentialService === "" ||
+        credentialHost === "" ||
+        credentialUser === "" ||
+        credentialPass === ""
+      ) {
+        setError("Incomplete Credentials");
+      } else {
+        let { data: cred, error } = await supabase
+          .from("creds")
+          .update({ credential: encryptJSON(credential) })
+          .eq("id", currentCredId);
+        if (error) setError(error.message);
+        else {
+          fetchCreds();
+          setError(null);
+          newCredentialServiceTextRef.current.value = "";
+          newCredentialHostTextRef.current.value = "";
+          newCredentialPortTextRef.current.value = "";
+          newCredentialUserTextRef.current.value = "";
+          newCredentialPassTextRef.current.value = "";
+        }
+      }
     } else {
-      let { data: cred, error } = await supabase
-        .from("creds")
-        .insert({ credential: encodeJSON(credential), user_id: user.id })
-        .single();
-      if (error) setError(error.message);
-      else {
-        setCreds([cred, ...creds]);
-        setError(null);
-        newCredentialServiceTextRef.current.value = "";
-        newCredentialHostTextRef.current.value = "";
-        newCredentialPortTextRef.current.value = "";
-        newCredentialUserTextRef.current.value = "";
-        newCredentialPassTextRef.current.value = "";
+      let credentialPass = newCredentialPassTextRef.current.value.trim();
+      let credentialUser = newCredentialUserTextRef.current.value.trim();
+      let credentialPort = newCredentialPortTextRef.current.value.trim();
+      let credentialHost = newCredentialHostTextRef.current.value.trim();
+      let credentialService = newCredentialServiceTextRef.current.value.trim();
+      let credential = {
+        service: credentialService,
+        host: credentialHost,
+        port: credentialPort,
+        user: credentialUser,
+        pass: credentialPass,
+      };
+
+      if (
+        credentialService === "" ||
+        credentialHost === "" ||
+        credentialUser === "" ||
+        credentialPass === ""
+      ) {
+        setError("Incomplete Credentials");
+      } else {
+        let { data: cred, error } = await supabase
+          .from("creds")
+          .insert({ credential: encryptJSON(credential), user_id: user.id })
+          .single();
+        if (error) setError(error.message);
+        else {
+          setCreds([cred, ...creds]);
+          setError(null);
+          newCredentialServiceTextRef.current.value = "";
+          newCredentialHostTextRef.current.value = "";
+          newCredentialPortTextRef.current.value = "";
+          newCredentialUserTextRef.current.value = "";
+          newCredentialPassTextRef.current.value = "";
+        }
       }
     }
   };
@@ -132,7 +201,7 @@ const Home = ({ user }) => {
             ref={newCredentialServiceTextRef}
             type="text"
             placeholder="Service"
-            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={"p-3  bg-dark text-white"}
           />
           <motion.input
@@ -141,7 +210,7 @@ const Home = ({ user }) => {
             ref={newCredentialHostTextRef}
             type="text"
             placeholder="Host"
-            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={"p-3 bg-dark text-white"}
           />
           <motion.input
@@ -150,7 +219,7 @@ const Home = ({ user }) => {
             ref={newCredentialPortTextRef}
             type="text"
             placeholder="Port"
-            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={"p-3 bg-dark text-white"}
           />
           <motion.input
@@ -159,7 +228,7 @@ const Home = ({ user }) => {
             ref={newCredentialUserTextRef}
             type="text"
             placeholder="User"
-            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={"p-3  bg-dark text-white"}
           />
           <motion.input
@@ -168,13 +237,14 @@ const Home = ({ user }) => {
             ref={newCredentialPassTextRef}
             type="password"
             placeholder="Password"
-            onKeyUp={(e) => e.key === "Enter" && addCred()}
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={"p-3   bg-dark text-white"}
           />
         </div>
 
         <button
-          onClick={addCred}
+          onClick={updateCred}
+          ref={storeButtonRef}
           className={
             "d-flex btn btn-block btn-danger text-dark justify-content-center py-2 px-4"
           }
@@ -205,6 +275,7 @@ const Home = ({ user }) => {
                 key={cred.id}
                 cred={cred}
                 onDelete={() => deleteCred(cred.id)}
+                onEdit={() => editCred(cred.id)}
               />
             ))
           ) : (

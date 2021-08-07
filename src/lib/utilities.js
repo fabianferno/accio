@@ -2,7 +2,7 @@ import { supabase } from "../lib/api";
 
 var CryptoJS = require("crypto-js");
 
-export function encodeJSON(data) {
+export function encryptJSON(data) {
   // Encrypt
   return CryptoJS.AES.encrypt(
     JSON.stringify(data),
@@ -10,7 +10,7 @@ export function encodeJSON(data) {
   ).toString();
 }
 
-export function decodeJSON(encodedString) {
+export function decryptJSON(encodedString) {
   // Decrypt
   var bytes = CryptoJS.AES.decrypt(encodedString, supabase.auth.user().id);
   return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
