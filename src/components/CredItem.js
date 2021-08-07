@@ -1,7 +1,7 @@
 import { decryptJSON } from "../lib/utilities";
 import { Trash, Share, PencilSquare } from "react-bootstrap-icons";
 
-const CredItem = ({ cred, onDelete, onEdit }) => {
+const CredItem = ({ cred, onDelete, onEdit, onShare }) => {
   return (
     <div className={"p-3 d-flex align-items-center justify-content-between "}>
       <span className={"form-group d-flex align-items-center "}>
@@ -19,7 +19,14 @@ const CredItem = ({ cred, onDelete, onEdit }) => {
                 >
                   <PencilSquare />
                 </div>
-                <div className="login-img btn">
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onShare();
+                  }}
+                  className="login-img btn"
+                >
                   <Share />
                 </div>
                 <div

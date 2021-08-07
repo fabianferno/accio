@@ -5,11 +5,21 @@ import CredItem from "../components/CredItem";
 import { encryptJSON, decryptJSON } from "../lib/utilities";
 import { motion } from "framer-motion";
 
+import { sendMail } from "../lib/sendinblue";
+
+import { Button, Modal } from "react-bootstrap";
+
 const Home = ({ user }) => {
   const [recoveryToken, setRecoveryToken] = useState(null);
   const [creds, setCreds] = useState([]);
   const [currentCredId, setCurrentCredId] = useState(null);
+  const [shareCredential, setShareCredential] = useState(null);
   const [errorText, setError] = useState("");
+
+  const [showShareModal, setShowShareModal] = useState(false);
+
+  const emailTextRef = useRef();
+  const nameTextRef = useRef();
 
   const newCredentialPassTextRef = useRef();
   const newCredentialUserTextRef = useRef();
@@ -52,7 +62,7 @@ const Home = ({ user }) => {
   };
 
   const searchCred = async () => {
-    let { data: creds, error } = await supabase
+    let { data: creds } = await supabase
       .from("creds")
       .select("*")
       .order("id", { ascending: false });
@@ -79,6 +89,18 @@ const Home = ({ user }) => {
     } catch (error) {
       console.log("error", error);
     }
+  };
+
+  const shareCred = async (id) => {
+    let { data: creds, error } = await supabase
+      .from("creds")
+      .select("*")
+      .eq("id", id);
+    if (error) console.log("error", error);
+
+    setShareCredential(decryptJSON(creds[0].credential));
+
+    setShowShareModal(true);
   };
 
   const editCred = async (id) => {
@@ -131,7 +153,7 @@ const Home = ({ user }) => {
       ) {
         setError("Incomplete Credentials");
       } else {
-        let { data: cred, error } = await supabase
+        let { data: error } = await supabase
           .from("creds")
           .update({ credential: encryptJSON(credential) })
           .eq("id", currentCredId);
@@ -186,6 +208,61 @@ const Home = ({ user }) => {
     }
   };
 
+  function ShareModal() {
+    const handleClose = () => setShowShareModal(false);
+
+    const handleShare = () => {
+      sendMail(
+        emailTextRef.current.value.trim(),
+        nameTextRef.current.value,
+        shareCredential
+      );
+    };
+
+    return (
+      <Modal show={showShareModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Share</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p className="p">Do not send your credentials to untrusted emails.</p>
+          <p className="p">Are you sure you want to share this credential?</p>
+          <div className="p-3 bg-dark text-white mb-5">
+            <code>{JSON.stringify(shareCredential)}</code>
+          </div>
+          <div className="bg-danger">
+            <motion.input
+              whileHover={{ height: 100 }}
+              whileFocus={{ scale: 1.2 }}
+              ref={emailTextRef}
+              type="text"
+              placeholder="Email"
+              className={"p-3 d-flex bg-dark text-white rounded"}
+              style={{ width: "100%" }}
+            />
+            <motion.input
+              whileHover={{ height: 100 }}
+              whileFocus={{ scale: 1.2 }}
+              ref={nameTextRef}
+              type="text"
+              placeholder="Name"
+              className={"p-3 d-flex bg-dark text-white rounded"}
+              style={{ width: "100%" }}
+            />
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleShare}>
+            Share
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
   return recoveryToken ? (
     <RecoverPassword
       token={recoveryToken}
@@ -193,6 +270,7 @@ const Home = ({ user }) => {
     />
   ) : (
     <div className={"d-flex flex-column "}>
+      <ShareModal />
       <div className="card card-body shadow rounded">
         <div className={"d-flex"}>
           <motion.input
@@ -276,6 +354,7 @@ const Home = ({ user }) => {
                 cred={cred}
                 onDelete={() => deleteCred(cred.id)}
                 onEdit={() => editCred(cred.id)}
+                onShare={() => shareCred(cred.id)}
               />
             ))
           ) : (

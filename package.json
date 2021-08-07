@@ -17,8 +17,11 @@
     "react-scripts": "4.0.3",
     "react-social-icons": "^5.5.1",
     "sass": "^1.37.5",
+    "sib-api-v3-sdk": "^8.2.1",
     "web-vitals": "^1.1.2"
   },
+
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
