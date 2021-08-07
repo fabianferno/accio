@@ -14,7 +14,7 @@ export default function BaseLayout(props) {
           </h1>
           <button
             onClick={handleLogout}
-            className="btn btn-lg btn-primary font-weight-bold text-capitalize"
+            className="btn btn-lg btn-primary text-white font-weight-bold text-capitalize"
           >
             Logout
           </button>

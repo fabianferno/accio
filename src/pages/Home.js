@@ -271,7 +271,7 @@ const Home = ({ user }) => {
   ) : (
     <div className={"d-flex flex-column "}>
       <ShareModal />
-      <div className="card card-body shadow rounded">
+      <div className=" card-body shadow rounded">
         <div className={"d-flex"}>
           <motion.input
             whileHover={{ width: 400 }}
@@ -345,6 +345,7 @@ const Home = ({ user }) => {
           />
         </div>
       </div>
+
       <div className={"d-flex flex-column  p-4"}>
         <div className={`d-flex`}>
           {creds.length ? (

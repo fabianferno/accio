@@ -93,7 +93,7 @@ const Auth = () => {
         <div className="mb-3 d-flex justify-content-center">
           <button
             onClick={() => handleLogin("LOGIN")}
-            className="btn btn-primary btn-lg mx-2"
+            className="btn btn-primary text-white btn-lg mx-2"
             type="submit"
           >
             Sign in
