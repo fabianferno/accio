@@ -5,9 +5,9 @@
 
 ## How do you use
 
-- With our minimal UI, Using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO.
+- With our minimal UI, using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO.
 - After logging in, you'll be prompted to provide your server credentials in input fields.
-- Click submit and voila! your cred is saved, easy-peasy right
+- Click submit and voila! Your cred is saved, easy-peasy right
 
 ## Editing & sharing
 
@@ -27,5 +27,5 @@
 - Click the delete icon and the creds will be removed
 
 ## Service that we used
-- For the [backend](https://github.com/fabianferno/accio-be) we used Flask
-- For the frontend we used ReactJs
+- [backend](https://github.com/fabianferno/accio-be) - Flask, Supabase
+- frontend - ReactJs
