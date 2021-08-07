@@ -33,7 +33,7 @@
 - It automatically creates a database record, which is super cool!
 - We can also create database rules
 - Working with database is much easier
-- It also automatically generates boilerplat, which made out job easy
+- It also automatically generates boilerplat, which made our job easy
 
 For the [backend](https://github.com/fabianferno/accio-be) - Flask, Supabase <br/>
 For the frontend - ReactJs
