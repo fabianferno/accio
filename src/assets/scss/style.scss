@@ -1,102 +1,101 @@
 @use "sass:map";
 /* make the customizations */
-$theme-colors: ("primary": #da4a56,
-    "dark": #282828,
-    "secondary": #240090,
-    "danger": #ff4c4c,
-    "info": #190061,
-    "warning":#0C0032,
-    "dull" : #eeeeee,
-    "black": #050505,
-    "success": #60ff9f, "neo": #cecece);
+$theme-colors: (
+  "primary": #da4a56,
+  "dark": #282828,
+  "secondary": #240090,
+  "danger": #ff4c4c,
+  "info": #190061,
+  "warning": #0c0032,
+  "dull": #eeeeee,
+  "black": #050505,
+  "success": #60ff9f,
+  "neo": #cecece,
+);
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
 
-
-
+@import url("../fonts/fonts.css");
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    background-color: map.get($theme-colors, "neo");
-    font-family: 'Poppins', cursive;
-    color: map.get($theme-colors, "dark");
-    min-height: 100vh;
-    // overflow-x: hidden;
+  background-color: map.get($theme-colors, "neo");
+  font-family: "Poppins", cursive;
+  color: map.get($theme-colors, "dark");
+  min-height: 100vh;
+  // overflow-x: hidden;
 }
 
 /* Code for Selection Text */
 ::-moz-selection {
-    background: map.get($theme-colors, "primary");
-    color: map.get($theme-colors, "white");
+  background: map.get($theme-colors, "primary");
+  color: map.get($theme-colors, "white");
 }
 
 ::selection {
-    background: map.get($theme-colors, "primary");
-    color: map.get($theme-colors, "white");
+  background: map.get($theme-colors, "primary");
+  color: map.get($theme-colors, "white");
 }
 
 a {
-    font-weight: bold;
-    text-decoration: none;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-
-
 .hero {
-    font-size: 7.5em;
-    font-family: 'Poppins', cursive;
-    line-height: "115px";
+  font-size: 7.5em;
+  font-family: "Poppins", cursive;
+  line-height: "115px";
 }
 
 .blur {
-    filter: blur(5px);
+  filter: blur(5px);
 }
 
 .hover-box {
-    background-image: linear-gradient(to bottom,
-            transparent calc(0% - 5px),
-            map.get($theme-colors, "primary") 0%,
-            map.get($theme-colors, "dark") 100%);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    display: inline;
-    transition: 0.5s ease;
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(0% - 5px),
+    map.get($theme-colors, "primary") 0%,
+    map.get($theme-colors, "dark") 100%
+  );
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: inline;
+  transition: 0.5s ease;
 }
 
-
 h1 {
-    color: map.get($theme-colors, "primary");
+  color: map.get($theme-colors, "primary");
 }
 
 img.dark-shadow {
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 1));
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 1));
 }
 
 .inner-shadow {
-    box-shadow: inset 0 0 20px #000000;
+  box-shadow: inset 0 0 20px #000000;
 }
 
 .social-pill {
-    margin-left: -10px;
-    padding-left: 25px;
-    color: #ffffff;
-    background-color: map.get($theme-colors, "dark");
+  margin-left: -10px;
+  padding-left: 25px;
+  color: #ffffff;
+  background-color: map.get($theme-colors, "dark");
 }
 
 .social-pill:hover {
-    color: map.get($theme-colors, "dark");
-    background-color: map.get($theme-colors, "dull");
+  color: map.get($theme-colors, "dark");
+  background-color: map.get($theme-colors, "dull");
 }
 
 .no-select {
-    user-select: none;
+  user-select: none;
 }
-
-
 
 //@import "neu-card.scss";
