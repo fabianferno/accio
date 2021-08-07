@@ -9,14 +9,14 @@ export default function BaseLayout(props) {
     <>
       <section className="bg-dark shadow">
         <div className=" d-flex p-3 justify-content-between align-items-center">
-          <h1 className="text-white mt-2">
-            <strong>accio</strong> - a developer's secret
+          <h1 className="text-primary mt-2">
+            <strong className="text-white">accio</strong> - developer's magic
           </h1>
           <button
             onClick={handleLogout}
             className="btn btn-lg btn-primary text-white font-weight-bold text-capitalize"
           >
-            Logout
+            Logout 🤞
           </button>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { supabase } from "../lib/api";
 import { SocialIcon } from "react-social-icons";
+import { motion } from "framer-motion";
 
 const Auth = () => {
   const [helperText, setHelperText] = useState({ error: null, text: null });
@@ -60,7 +61,7 @@ const Auth = () => {
     >
       <form className="container">
         <h1
-          className="font-weight-bold text-primary pt-2"
+          className="font-weight-bold text-primary pt-5"
           style={{ fontSize: "8rem", fontWeight: "bold" }}
         >
           accio
@@ -70,26 +71,32 @@ const Auth = () => {
           a <strong>developer</strong> friendly credential manager.
         </h5>
 
-        <div className="mx-5 mb-5">
-          <input
-            type="email"
-            id="inputEmail"
-            className="form-control bg-dark text-white mb-4 py-3 radify-more"
-            placeholder="Email address"
-            required
-            autoFocus
-            name={"email"}
-            ref={emailRef}
-          />
-          <input
-            type="password"
-            id="inputPassword"
-            className="form-control bg-dark text-white mb-4 py-3 radify-more"
-            placeholder="Password"
-            required
-            name={"password"}
-            ref={passwordRef}
-          />
+        <div className="mx-5 mb-5 ">
+          <div className="form-group">
+            <motion.input
+              whileFocus={{ scale: 1.05 }}
+              type="email"
+              id="inputEmail"
+              className=" w-100 bg-dark text-white text-center mb-4 p-3 radify-more focus-primary"
+              placeholder="Email address"
+              required
+              autoFocus
+              name={"email"}
+              ref={emailRef}
+            />
+          </div>
+          <div className="form-group">
+            <motion.input
+              whileFocus={{ scale: 1.05 }}
+              type="password"
+              id="inputPassword"
+              className="w-100 bg-dark text-white  text-center mb-4 p-3 radify-more focus-primary"
+              placeholder="Password"
+              required
+              name={"password"}
+              ref={passwordRef}
+            />
+          </div>
         </div>
         <div className="mb-3 d-flex justify-content-center">
           <button

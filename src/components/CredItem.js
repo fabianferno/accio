@@ -7,9 +7,9 @@ const CredItem = ({ cred, onDelete, onEdit, onShare }) => {
     <div className="m-0 my-2 m-md-3 ">
       <motion.div
         style={{ minWidth: "100%" }}
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ ease: "easeOut", duration: 2 }}
+        transition={{ ease: "easeOut", duration: 0.4 }}
         className="d-flex justify-content-center card p-3 shadow radify"
       >
         <div className="d-flex justify-content-between align-items-center">

@@ -156,9 +156,11 @@ const Home = ({ user }) => {
           .from("creds")
           .update({ credential: encryptJSON(credential) })
           .eq("id", currentCredId);
+
+        fetchCreds();
+
         if (error) setError(error.message);
         else {
-          fetchCreds();
           setError(null);
           newCredentialServiceTextRef.current.value = "";
           newCredentialHostTextRef.current.value = "";
@@ -203,8 +205,7 @@ const Home = ({ user }) => {
           newCredentialPortTextRef.current.value = "";
           newCredentialUserTextRef.current.value = "";
           newCredentialPassTextRef.current.value = "";
-
-          setButtonText("Store ⚡");
+          fetchCreds();
         }
       }
     }
@@ -273,7 +274,7 @@ const Home = ({ user }) => {
   ) : (
     <div className={" flex-column "}>
       <ShareModal />
-      <div className="card card-body shadow radify ">
+      <div className="card card-body bg-secondary shadow radify ">
         <div className={"d-block d-md-flex justify-content-center "}>
           <motion.input
             style={{ width: "100%" }}
@@ -284,7 +285,7 @@ const Home = ({ user }) => {
             placeholder="Service"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={
-              "p-3 d-flex d-md-inline bg-dark text-white radify-more m-md-2 mx-0 my-2"
+              "p-3 d-flex d-md-inline focus-primary bg-dark text-white radify-more m-md-2 mx-0 my-2"
             }
           />
           <motion.input
@@ -296,7 +297,7 @@ const Home = ({ user }) => {
             placeholder="Host"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={
-              "p-3 d-flex d-md-inline   bg-dark text-white  radify-more m-md-2 mx-0 my-2"
+              "p-3 d-flex d-md-inline focus-primary  bg-dark text-white  radify-more m-md-2 mx-0 my-2"
             }
           />
           <motion.input
@@ -308,7 +309,7 @@ const Home = ({ user }) => {
             placeholder="Port"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={
-              "p-3 d-flex d-md-inline   bg-dark text-white  radify-more m-md-2 mx-0 my-2"
+              "p-3 d-flex d-md-inline focus-primary  bg-dark text-white  radify-more m-md-2 mx-0 my-2"
             }
           />
           <motion.input
@@ -320,7 +321,7 @@ const Home = ({ user }) => {
             placeholder="User"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={
-              "p-3 d-flex d-md-inline  bg-dark text-white  radify-more m-md-2 mx-0 my-2"
+              "p-3 d-flex d-md-inline focus-primary bg-dark text-white  radify-more m-md-2 mx-0 my-2"
             }
           />
           <motion.input
@@ -332,7 +333,7 @@ const Home = ({ user }) => {
             placeholder="Password"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
             className={
-              "p-3 d-flex d-md-inline  bg-dark text-white radify-more m-md-2 mx-0 my-2"
+              "p-3 d-flex d-md-inline focus-primary bg-dark text-white radify-more m-md-2 mx-0 my-2"
             }
           />
         </div>
@@ -357,7 +358,9 @@ const Home = ({ user }) => {
             type="text"
             placeholder="Search for Credentials"
             onKeyUp={(e) => e.key === "Enter" && searchCred()}
-            className={"p-3 d-flex bg-dark text-white radify-more"}
+            className={
+              "p-3 d-flex bg-dark text-white radify-more focus-primary"
+            }
             style={{ width: "100%" }}
             onChange={searchCred}
           />
