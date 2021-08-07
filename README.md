@@ -27,4 +27,5 @@
 - Click the delete icon and the creds will be removed
 
 ## Service that we used
-For the [Backend](https://github.com/fabianferno/accio-be) we used Flask
+- For the [backend](https://github.com/fabianferno/accio-be) we used Flask
+- For the frontend we used ReactJs
