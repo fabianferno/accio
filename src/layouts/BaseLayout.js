@@ -26,6 +26,8 @@ export default function BaseLayout(props) {
       >
         {props.children}
       </div>
+
+      <footer className="bg-dark text-white text-center"></footer>
     </>
   );
 }
