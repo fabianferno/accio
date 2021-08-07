@@ -70,11 +70,11 @@ const Auth = () => {
           a <strong>developer</strong> friendly credential manager.
         </h5>
 
-        <div className="mx-5">
+        <div className="mx-5 mb-5">
           <input
             type="email"
             id="inputEmail"
-            className="form-control bg-dark text-white mb-4 py-3"
+            className="form-control bg-dark text-white mb-4 py-3 radify-more"
             placeholder="Email address"
             required
             autoFocus
@@ -84,7 +84,7 @@ const Auth = () => {
           <input
             type="password"
             id="inputPassword"
-            className="form-control bg-dark text-white mb-4 py-3"
+            className="form-control bg-dark text-white mb-4 py-3 radify-more"
             placeholder="Password"
             required
             name={"password"}
@@ -107,7 +107,7 @@ const Auth = () => {
             Sign Up
           </button>
         </div>
-        <span className={"mt-3"} onClick={forgotPassword}>
+        <span className={"btn"} onClick={forgotPassword}>
           Forgot Password?
         </span>
 
@@ -117,21 +117,21 @@ const Auth = () => {
         <div className="mt-3 d-flex justify-content-center">
           <div className="mx-3 btn" onClick={() => handleOAuthLogin("github")}>
             <SocialIcon network="github" fgColor="#ffffff" bgColor="#211F1F" />
-            <span className="d-md-inline d-none btn social-pill mr-5 font-weight-bold text-capitalize">
+            <span className="d-md-inline d-none btn social-pill mr-5 font-weight-bold radify">
               Github
             </span>
           </div>
 
           <div className="mx-3 btn" onClick={() => handleOAuthLogin("google")}>
             <SocialIcon network="google" fgColor="#ffffff" bgColor="#DE5246" />
-            <span className="d-md-inline d-none  btn social-pill mr-5 font-weight-bold">
+            <span className="d-md-inline d-none  btn social-pill mr-5 font-weight-bold radify">
               Google
             </span>
           </div>
 
           <div className="mx-3 btn" onClick={() => handleOAuthLogin("discord")}>
             <SocialIcon network="discord" fgColor="#ffffff" bgColor="#5865F2" />
-            <span className="d-md-inline d-none btn social-pill mr-5 font-weight-bold">
+            <span className="d-md-inline d-none btn social-pill mr-5 font-weight-bold radify">
               Discord
             </span>
           </div>
