@@ -8,7 +8,7 @@ $theme-colors: ("primary": #da4a56,
     "warning":#0C0032,
     "dull" : #eeeeee,
     "black": #050505,
-    "success": #60ff9f, "neo": #f0d2d2);
+    "success": #60ff9f, "neo": #cecece);
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
@@ -26,7 +26,7 @@ body {
     font-family: 'Poppins', cursive;
     color: map.get($theme-colors, "dark");
     min-height: 100vh;
-    overflow-x: hidden;
+    // overflow-x: hidden;
 }
 
 /* Code for Selection Text */
@@ -99,5 +99,4 @@ img.dark-shadow {
 
 
 
-@import "cred-card.scss";
 //@import "neu-card.scss";

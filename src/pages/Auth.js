@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { supabase } from "../lib/api";
-import logo from "../assets/img/accio.svg";
 import { SocialIcon } from "react-social-icons";
 
 const Auth = () => {
@@ -61,15 +60,15 @@ const Auth = () => {
     >
       <form>
         <h1
-          className="font-weight-bold text-primary mb-3"
-          style={{ fontSize: "5rem", fontWeight: "bold" }}
+          className="font-weight-bold text-primary inner-shadow pt-2"
+          style={{ fontSize: "8rem", fontWeight: "bold" }}
         >
-          <img src={logo} height={80} alt="" srcSet="" className="pb-2" /> accio
+          accio
         </h1>
 
-        <p className="mb-5">
+        <h5 className="mb-5 mt-3">
           a <strong>developer</strong> friendly credential manager.
-        </p>
+        </h5>
 
         <input
           type="email"
@@ -135,9 +134,10 @@ const Auth = () => {
             </span>
           </div>
         </div>
+
         {!!helperText.text && (
           <div
-            className={`px-1 py-2 my-2 text-center ${
+            className={`my-4 text-center ${
               helperText.error
                 ? "bg-danger text-white"
                 : "bg-success text-white"
@@ -146,6 +146,17 @@ const Auth = () => {
             {helperText.text}
           </div>
         )}
+        <hr className="mt-5 " />
+        <span className="text-center texh-white mt-3">
+          Developed by{" "}
+          <a className="text-primary" href="https://github.com/fabianferno">
+            Fabian Ferno
+          </a>{" "}
+          and{" "}
+          <a className="text-primary" href="https://github.com/Joshuafrankle">
+            Joshua Frankle
+          </a>
+        </span>
       </form>
     </div>
   );
