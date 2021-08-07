@@ -158,16 +158,16 @@ const Home = ({ user }) => {
           .eq("id", currentCredId);
 
         fetchCreds();
+        setButtonText("Store ⚡");
+        newCredentialServiceTextRef.current.value = "";
+        newCredentialHostTextRef.current.value = "";
+        newCredentialPortTextRef.current.value = "";
+        newCredentialUserTextRef.current.value = "";
+        newCredentialPassTextRef.current.value = "";
 
         if (error) setError(error.message);
         else {
           setError(null);
-          newCredentialServiceTextRef.current.value = "";
-          newCredentialHostTextRef.current.value = "";
-          newCredentialPortTextRef.current.value = "";
-          newCredentialUserTextRef.current.value = "";
-          newCredentialPassTextRef.current.value = "";
-          setButtonText("Store ⚡");
         }
       }
     } else {
