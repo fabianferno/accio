@@ -5,8 +5,8 @@
 
 ## How do you use
 
-- With our minimal UI, using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO.
-- After logging in, you'll be prompted to provide your server credentials in input fields.
+- With our minimal UI, using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO
+- After logging in, you'll be prompted to provide your server credentials in input fields
 - Click submit and voila! Your cred is saved, easy-peasy right
 
 ## Editing & sharing
