@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# Accio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+As technology advances, we will require more servers to operate our web applications. It's acceptable to remember one server cred, but remembering thousands isn't.
+We present [Accio](https://accio.fabianferno.tech) to you. Accio is a service that allows you to save and share thousands of server credentials with a single click. There's no need to be concerned about data leaks because the credentials are encrypted.
 
-## Available Scripts
+## How do you use
 
-In the project directory, you can run:
+With our minimal UI, Using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO
+After logging in, you'll be prompted to provide your server credentials in input fields.
+Click submit and voila! your cred is saved, easy-peasy right
 
-### `npm start`
+## Editing & sharing
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Uh oh! I entered a worng ssh passoword
+No worries, see the edit icon at top right of the card, click it
+edit them in the input fields, click submit and... done
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I feel like sharing my creds to a co developer
+We got you, See the share icon at top right of the card, click it
+provide the recipient's email and name, click submit and... done
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This server cred is Reduntant
+As developers we know redundance is inevitable
+clik the delete icon and... the creds will be removed
