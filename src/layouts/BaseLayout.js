@@ -10,7 +10,7 @@ export default function BaseLayout(props) {
       <section className="bg-dark shadow">
         <div className=" d-flex p-3 justify-content-between align-items-center">
           <h1 className="text-white font-weight-bold mt-2">
-            <strong>accio</strong>&trade;
+            <strong>accio</strong> - a developer's secret
           </h1>
           <button
             onClick={handleLogout}
@@ -21,8 +21,8 @@ export default function BaseLayout(props) {
         </div>
       </section>
       <div
-        style={{ minHeight: "95vh" }}
-        className="d-flex justify-content-center align-items-center"
+        style={{ minHeight: "90vh" }}
+        className="d-flex justify-content-center align-items-center mt-md-0 mt-5"
       >
         {props.children}
       </div>

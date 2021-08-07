@@ -58,9 +58,9 @@ const Auth = () => {
       style={{ minHeight: "100vh" }}
       className="d-flex justify-content-center align-items-center text-center"
     >
-      <form>
+      <form className="container">
         <h1
-          className="font-weight-bold text-primary inner-shadow pt-2"
+          className="font-weight-bold text-primary pt-2"
           style={{ fontSize: "8rem", fontWeight: "bold" }}
         >
           accio
@@ -70,25 +70,27 @@ const Auth = () => {
           a <strong>developer</strong> friendly credential manager.
         </h5>
 
-        <input
-          type="email"
-          id="inputEmail"
-          className="form-control bg-dark text-white mb-4 py-3"
-          placeholder="Email address"
-          required
-          autoFocus
-          name={"email"}
-          ref={emailRef}
-        />
-        <input
-          type="password"
-          id="inputPassword"
-          className="form-control bg-dark text-white mb-4 py-3"
-          placeholder="Password"
-          required
-          name={"password"}
-          ref={passwordRef}
-        />
+        <div className="mx-5">
+          <input
+            type="email"
+            id="inputEmail"
+            className="form-control bg-dark text-white mb-4 py-3"
+            placeholder="Email address"
+            required
+            autoFocus
+            name={"email"}
+            ref={emailRef}
+          />
+          <input
+            type="password"
+            id="inputPassword"
+            className="form-control bg-dark text-white mb-4 py-3"
+            placeholder="Password"
+            required
+            name={"password"}
+            ref={passwordRef}
+          />
+        </div>
         <div className="mb-3 d-flex justify-content-center">
           <button
             onClick={() => handleLogin("LOGIN")}
@@ -112,24 +114,24 @@ const Auth = () => {
         <hr className="mt-5 " />
 
         <span className="text-center texh-white mt-3">or Log In with</span>
-        <div className="mt-3 d-flex">
-          <div className="mx-3" onClick={() => handleOAuthLogin("github")}>
+        <div className="mt-3 d-flex justify-content-center">
+          <div className="mx-3 btn" onClick={() => handleOAuthLogin("github")}>
             <SocialIcon network="github" fgColor="#ffffff" bgColor="#211F1F" />
-            <span className="btn social-pill mr-5 font-weight-bold text-capitalize">
+            <span className="d-md-inline d-none btn social-pill mr-5 font-weight-bold text-capitalize">
               Github
             </span>
           </div>
 
-          <div className="mx-3" onClick={() => handleOAuthLogin("google")}>
+          <div className="mx-3 btn" onClick={() => handleOAuthLogin("google")}>
             <SocialIcon network="google" fgColor="#ffffff" bgColor="#DE5246" />
-            <span className="btn social-pill mr-5 font-weight-bold">
+            <span className="d-md-inline d-none  btn social-pill mr-5 font-weight-bold">
               Google
             </span>
           </div>
 
-          <div className="mx-3" onClick={() => handleOAuthLogin("discord")}>
+          <div className="mx-3 btn" onClick={() => handleOAuthLogin("discord")}>
             <SocialIcon network="discord" fgColor="#ffffff" bgColor="#5865F2" />
-            <span className="btn social-pill mr-5 font-weight-bold">
+            <span className="d-md-inline d-none btn social-pill mr-5 font-weight-bold">
               Discord
             </span>
           </div>
