@@ -11,7 +11,7 @@
 
 ## Editing & sharing
 
-### Uh oh! I entered a worng ssh passoword<br/>
+### Uh oh! I entered a wrong ssh passoword<br/>
 <img src="https://countdown-liard.vercel.app/images/ss2.png" height="=300px" width="300px" /> <br/>
 - No worries, see the edit icon at top right of the card, click it
 - Edit them in the input fields, click submit and... done
