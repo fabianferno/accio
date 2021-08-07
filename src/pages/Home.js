@@ -221,7 +221,7 @@ const Home = ({ user }) => {
 
     return (
       <Modal show={showShareModal} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Share</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -274,43 +274,48 @@ const Home = ({ user }) => {
       <div className=" card-body shadow rounded">
         <div className={"d-flex"}>
           <motion.input
-            whileHover={{ width: 400 }}
+            style={{ width: 200 }}
+            whileHover={{ scale: 1.2 }}
             whileFocus={{ scale: 1.2 }}
             ref={newCredentialServiceTextRef}
             type="text"
             placeholder="Service"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
-            className={"p-3  bg-dark text-white"}
+            className={"p-3 form-control bg-dark text-white"}
           />
           <motion.input
-            whileHover={{ width: 400 }}
+            style={{ width: 200 }}
+            whileHover={{ scale: 1.2 }}
             whileFocus={{ scale: 1.2 }}
             ref={newCredentialHostTextRef}
             type="text"
             placeholder="Host"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
-            className={"p-3 bg-dark text-white"}
+            className={"p-3 form-control bg-dark text-white"}
           />
           <motion.input
-            whileHover={{ width: 400 }}
+            style={{ width: 200 }}
+            whileHover={{ scale: 1.2 }}
             whileFocus={{ scale: 1.2 }}
             ref={newCredentialPortTextRef}
             type="text"
             placeholder="Port"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
-            className={"p-3 bg-dark text-white"}
+            className={"p-3 form-control bg-dark text-white"}
           />
           <motion.input
-            whileHover={{ width: 400 }}
+            style={{ width: 200 }}
+            whileHover={{ scale: 1.2 }}
             whileFocus={{ scale: 1.2 }}
             ref={newCredentialUserTextRef}
             type="text"
             placeholder="User"
             onKeyUp={(e) => e.key === "Enter" && updateCred()}
-            className={"p-3  bg-dark text-white"}
+            className={"p-3 form-control bg-dark text-white"}
           />
           <motion.input
-            whileHover={{ width: 400 }}
+            style={{ width: 200 }}
+            whileHover={{ scale: 1.2 }}
             whileFocus={{ scale: 1.2 }}
             ref={newCredentialPassTextRef}
             type="password"
@@ -324,17 +329,17 @@ const Home = ({ user }) => {
           onClick={updateCred}
           ref={storeButtonRef}
           className={
-            "d-flex btn btn-block btn-danger text-dark justify-content-center py-2 px-4"
+            "d-flex btn btn-block btn-primary  text-white justify-content-center py-2 px-4"
           }
           style={{ width: "100%" }}
         >
-          Store +
+          <strong> Store +</strong>
         </button>
 
         <div className="d-flex align-items-center mt-3">
           <motion.input
             whileHover={{ height: 100 }}
-            whileFocus={{ scale: 1.2 }}
+            whileFocus={{ scale: 1.07 }}
             ref={searchCredentialTextRef}
             type="text"
             placeholder="Search for Credentials"
