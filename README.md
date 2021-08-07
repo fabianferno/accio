@@ -5,13 +5,13 @@
 
 ## How do you use
 
-- With our minimal UI, Using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO.
-- After logging in, you'll be prompted to provide your server credentials in input fields.
-- Click submit and voila! your cred is saved, easy-peasy right
+- With our minimal UI, using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO
+- After logging in, you'll be prompted to provide your server credentials in input fields
+- Click submit and voila! Your cred is saved, easy-peasy right
 
 ## Editing & sharing
 
-### Uh oh! I entered a worng ssh passoword<br/>
+### Uh oh! I entered a wrong ssh passoword<br/>
 <img src="https://countdown-liard.vercel.app/images/ss2.png" height="=300px" width="300px" /> <br/>
 - No worries, see the edit icon at top right of the card, click it
 - Edit them in the input fields, click submit and... done
@@ -27,4 +27,5 @@
 - Click the delete icon and the creds will be removed
 
 ## Service that we used
-For the backend [Backend](https://github.com/fabianferno/accio-be) we used Flask
+- [backend](https://github.com/fabianferno/accio-be) - Flask, Supabase
+- frontend - ReactJs
