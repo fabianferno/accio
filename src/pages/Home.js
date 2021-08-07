@@ -16,6 +16,7 @@ const Home = ({ user }) => {
   const [currentCredId, setCurrentCredId] = useState(null);
   const [shareCredential, setShareCredential] = useState(null);
   const [errorText, setError] = useState("");
+  const [buttonText, setButtonText] = useState("Store ⚡");
 
   const [showShareModal, setShowShareModal] = useState(false);
 
@@ -33,10 +34,6 @@ const Home = ({ user }) => {
   const storeButtonRef = useRef();
 
   useEffect(() => {
-    /* Recovery url is of the form
-     * <SITE_URL>#access_token=x&refresh_token=y&expires_in=z&token_type=bearer&type=recovery
-     * Read more on https://supabase.io/docs/reference/javascript/reset-password-email#notes
-     */
     let url = window.location.hash;
     let query = url.substr(1);
     let result = {};
@@ -128,6 +125,7 @@ const Home = ({ user }) => {
     ).service;
 
     setCurrentCredId(id);
+    setButtonText("Update 📝");
   };
 
   const updateCred = async () => {
@@ -167,6 +165,7 @@ const Home = ({ user }) => {
           newCredentialPortTextRef.current.value = "";
           newCredentialUserTextRef.current.value = "";
           newCredentialPassTextRef.current.value = "";
+          setButtonText("Store ⚡");
         }
       }
     } else {
@@ -204,6 +203,8 @@ const Home = ({ user }) => {
           newCredentialPortTextRef.current.value = "";
           newCredentialUserTextRef.current.value = "";
           newCredentialPassTextRef.current.value = "";
+
+          setButtonText("Store ⚡");
         }
       }
     }
@@ -272,81 +273,91 @@ const Home = ({ user }) => {
   ) : (
     <div className={" flex-column "}>
       <ShareModal />
-      <div className="card card-body shadow rounded">
-        <div className="d-flex justify-content-center">
-          <div className={"d-block d-md-flex justify-content-center "}>
-            <motion.input
-              style={{ width: "100%" }}
-              whileHover={{ scale: 1.2 }}
-              whileFocus={{ scale: 1.2 }}
-              ref={newCredentialServiceTextRef}
-              type="text"
-              placeholder="Service"
-              onKeyUp={(e) => e.key === "Enter" && updateCred()}
-              className={"p-3 d-flex d-md-inline   bg-dark text-white"}
-            />
-            <motion.input
-              style={{ width: "100%" }}
-              whileHover={{ scale: 1.2 }}
-              whileFocus={{ scale: 1.2 }}
-              ref={newCredentialHostTextRef}
-              type="text"
-              placeholder="Host"
-              onKeyUp={(e) => e.key === "Enter" && updateCred()}
-              className={"p-3 d-flex d-md-inline   bg-dark text-white"}
-            />
-            <motion.input
-              style={{ width: "100%" }}
-              whileHover={{ scale: 1.2 }}
-              whileFocus={{ scale: 1.2 }}
-              ref={newCredentialPortTextRef}
-              type="text"
-              placeholder="Port"
-              onKeyUp={(e) => e.key === "Enter" && updateCred()}
-              className={"p-3 d-flex d-md-inline   bg-dark text-white"}
-            />
-            <motion.input
-              style={{ width: "100%" }}
-              whileHover={{ scale: 1.2 }}
-              whileFocus={{ scale: 1.2 }}
-              ref={newCredentialUserTextRef}
-              type="text"
-              placeholder="User"
-              onKeyUp={(e) => e.key === "Enter" && updateCred()}
-              className={"p-3 d-flex d-md-inline  bg-dark text-white"}
-            />
-            <motion.input
-              style={{ width: "100%" }}
-              whileHover={{ scale: 1.2 }}
-              whileFocus={{ scale: 1.2 }}
-              ref={newCredentialPassTextRef}
-              type="password"
-              placeholder="Password"
-              onKeyUp={(e) => e.key === "Enter" && updateCred()}
-              className={"p-3 d-flex d-md-inline  bg-dark text-white"}
-            />
-          </div>
-        </div>
-        <button
-          onClick={updateCred}
-          ref={storeButtonRef}
-          className={
-            "d-flex btn btn-block btn-primary  text-white justify-content-center align-items-center py-2 px-4"
-          }
-          style={{ width: "100%" }}
-        >
-          <strong> Store +</strong>
-        </button>
-
-        <div className="d-flex align-items-center mt-3">
+      <div className="card card-body shadow radify ">
+        <div className={"d-block d-md-flex justify-content-center "}>
           <motion.input
-            whileHover={{ height: 100 }}
-            whileFocus={{ scale: 1.07 }}
+            style={{ width: "100%" }}
+            whileHover={{ scale: 1.2 }}
+            whileFocus={{ scale: 1.3 }}
+            ref={newCredentialServiceTextRef}
+            type="text"
+            placeholder="Service"
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
+            className={
+              "p-3 d-flex d-md-inline bg-dark text-white radify-more m-md-2 mx-0 my-2"
+            }
+          />
+          <motion.input
+            style={{ width: "100%" }}
+            whileHover={{ scale: 1.2 }}
+            whileFocus={{ scale: 1.3 }}
+            ref={newCredentialHostTextRef}
+            type="text"
+            placeholder="Host"
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
+            className={
+              "p-3 d-flex d-md-inline   bg-dark text-white  radify-more m-md-2 mx-0 my-2"
+            }
+          />
+          <motion.input
+            style={{ width: "100%" }}
+            whileHover={{ scale: 1.2 }}
+            whileFocus={{ scale: 1.3 }}
+            ref={newCredentialPortTextRef}
+            type="text"
+            placeholder="Port"
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
+            className={
+              "p-3 d-flex d-md-inline   bg-dark text-white  radify-more m-md-2 mx-0 my-2"
+            }
+          />
+          <motion.input
+            style={{ width: "100%" }}
+            whileHover={{ scale: 1.2 }}
+            whileFocus={{ scale: 1.3 }}
+            ref={newCredentialUserTextRef}
+            type="text"
+            placeholder="User"
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
+            className={
+              "p-3 d-flex d-md-inline  bg-dark text-white  radify-more m-md-2 mx-0 my-2"
+            }
+          />
+          <motion.input
+            style={{ width: "100%" }}
+            whileHover={{ scale: 1.2 }}
+            whileFocus={{ scale: 1.3 }}
+            ref={newCredentialPassTextRef}
+            type="password"
+            placeholder="Password"
+            onKeyUp={(e) => e.key === "Enter" && updateCred()}
+            className={
+              "p-3 d-flex d-md-inline  bg-dark text-white radify-more m-md-2 mx-0 my-2"
+            }
+          />
+        </div>
+        <div className="d-flex justify-content-center align-items-center">
+          <button
+            onClick={updateCred}
+            ref={storeButtonRef}
+            className={
+              "d-flex btn btn-block btn-primary text-white font-weight-bold justify-content-center align-items-center p-4 mt-3 radify-more"
+            }
+            style={{ width: "100%" }}
+          >
+            {buttonText}
+          </button>
+        </div>
+
+        <div className="d-flex align-items-center mt-3  ">
+          <motion.input
+            whileHover={{ height: 80 }}
+            whileFocus={{ height: 100, scale: 1.07 }}
             ref={searchCredentialTextRef}
             type="text"
             placeholder="Search for Credentials"
             onKeyUp={(e) => e.key === "Enter" && searchCred()}
-            className={"p-3 d-flex bg-dark text-white rounded"}
+            className={"p-3 d-flex bg-dark text-white radify-more"}
             style={{ width: "100%" }}
             onChange={searchCred}
           />

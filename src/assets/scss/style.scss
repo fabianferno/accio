@@ -1,9 +1,8 @@
 @use "sass:map";
 /* make the customizations */
-$theme-colors: (
-  "primary": #da4a56,
+$theme-colors: ("primary": #da4a56,
   "dark": #282828,
-  "secondary": #240090,
+  "secondary": #555555,
   "danger": #ff4c4c,
   "info": #190061,
   "warning": #0c0032,
@@ -25,7 +24,7 @@ $theme-colors: (
 html,
 body {
   background-color: map.get($theme-colors, "neo");
-  font-family: "Poppins", cursive;
+  font-family: "Poppins";
   color: map.get($theme-colors, "dark");
   min-height: 100vh;
   // overflow-x: hidden;
@@ -58,12 +57,10 @@ a {
 }
 
 .hover-box {
-  background-image: linear-gradient(
-    to bottom,
-    transparent calc(0% - 5px),
-    map.get($theme-colors, "primary") 0%,
-    map.get($theme-colors, "dark") 100%
-  );
+  background-image: linear-gradient(to bottom,
+      transparent calc(0% - 5px),
+      map.get($theme-colors, "primary") 0%,
+      map.get($theme-colors, "dark") 100%);
   background-size: 100%;
   background-repeat: no-repeat;
   display: inline;
@@ -97,5 +94,31 @@ img.dark-shadow {
 .no-select {
   user-select: none;
 }
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.radify {
+  border-radius: 25px;
+}
+
+
+.radify-more {
+  border-radius: 60px;
+}
+
+.radify-bottom {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+input:focus {
+  outline: none !important;
+  border: 4px solid map.get($theme-colors, "primary");
+  box-shadow: 0 0 10px #ffffff;
+}
+
+
 
 //@import "neu-card.scss";

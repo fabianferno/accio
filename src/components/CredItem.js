@@ -7,9 +7,10 @@ const CredItem = ({ cred, onDelete, onEdit, onShare }) => {
     <div className="m-0 my-2 m-md-3 ">
       <motion.div
         style={{ minWidth: "100%" }}
-        initial={{ opacity: "0%" }}
-        animate={{ opacity: "100%" }}
-        className="d-flex justify-content-center card p-3  shadow"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ ease: "easeOut", duration: 2 }}
+        className="d-flex justify-content-center card p-3 shadow radify"
       >
         <div className="d-flex justify-content-between align-items-center">
           <div>#{JSON.stringify(cred.id)}</div>
@@ -20,7 +21,7 @@ const CredItem = ({ cred, onDelete, onEdit, onShare }) => {
                 e.stopPropagation();
                 onEdit();
               }}
-              className="btn btn-sm btn-primary text-white mx-1"
+              className="btn btn-sm btn-primary text-white mx-1 radify"
             >
               <PencilSquare />
             </div>
@@ -30,7 +31,7 @@ const CredItem = ({ cred, onDelete, onEdit, onShare }) => {
                 e.stopPropagation();
                 onShare();
               }}
-              className="btn btn-sm btn-primary text-white mx-1"
+              className="btn btn-sm btn-primary text-white mx-1 radify"
             >
               <Share />
             </div>
@@ -40,7 +41,7 @@ const CredItem = ({ cred, onDelete, onEdit, onShare }) => {
                 e.stopPropagation();
                 onDelete();
               }}
-              className="btn btn-sm btn-primary text-white mx-1"
+              className="btn btn-sm btn-primary text-white mx-1 radify"
             >
               <Trash />
             </div>
@@ -56,11 +57,11 @@ const CredItem = ({ cred, onDelete, onEdit, onShare }) => {
           <h5 className="fw-bold">User</h5>
           <p>{decryptJSON(cred.credential).user}</p>
           <h5 className="fw-bold">Password</h5>
-          <div className="bg-dark rounded p-2">
+          <div className="bg-secondary radify-bottom p-2">
             <motion.div
               whileHover={{ opacity: "100%" }}
               style={{ opacity: "0%" }}
-              className="p text-white"
+              className="p text-white "
             >
               {decryptJSON(cred.credential).pass}
             </motion.div>

@@ -9,7 +9,7 @@ export default function BaseLayout(props) {
     <>
       <section className="bg-dark shadow">
         <div className=" d-flex p-3 justify-content-between align-items-center">
-          <h1 className="text-white font-weight-bold mt-2">
+          <h1 className="text-white mt-2">
             <strong>accio</strong> - a developer's secret
           </h1>
           <button
@@ -27,7 +27,18 @@ export default function BaseLayout(props) {
         {props.children}
       </div>
 
-      <footer className="bg-dark text-white text-center"></footer>
+      <footer className="bg-dark py-3 text-white text-center">
+        <span className="text-center text-white mt-3">
+          Developed by{" "}
+          <a className="text-primary" href="https://github.com/fabianferno">
+            Fabian Ferno
+          </a>{" "}
+          and{" "}
+          <a className="text-primary" href="https://github.com/Joshuafrankle">
+            Joshua Frankle
+          </a>
+        </span>
+      </footer>
     </>
   );
 }
