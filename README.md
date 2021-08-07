@@ -7,7 +7,7 @@
 
 - With our minimal UI, using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO
 - After logging in, you'll be prompted to provide your server credentials in input fields
-- Click submit and voila! Your cred is saved, easy-peasy right
+- Fill them, click submit and voila! Your cred is saved, easy-peasy right
 
 ## Editing & sharing
 
@@ -26,6 +26,14 @@
 - As developers we know redundance is inevitable
 - Click the delete icon and the creds will be removed
 
-## Service that we used
-- [backend](https://github.com/fabianferno/accio-be) - Flask, Supabase
-- frontend - ReactJs
+## Services that we used
+
+### Supabase
+- Spabase was our go to build this app
+- It automatically creates a database record, which is super cool!
+- We can also create database rules
+- Working with database is much easier
+- It also automatically generates boilerplate 
+
+For the [backend](https://github.com/fabianferno/accio-be) - Flask, Supabase <br/>
+For the frontend - ReactJs
