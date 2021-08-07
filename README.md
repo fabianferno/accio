@@ -1,7 +1,7 @@
 # Accio
 
 As technology advances, we will require more servers to operate our web applications. It's acceptable to remember one server cred, but remembering thousands isn't<br/>
-We present [Accio](https://accio.fabianferno.tech) to you. Accio is a service that allows you to save and share thousands of server credentials with a single click. There's no need to be concerned about data leaks because the credentials are encrypted.
+We present [Accio](https://accio.fabianferno.tech) to you. Accio is a web app that allows you to save and share thousands of server credentials with a single click. There's no need to be concerned about data leaks because the credentials are encrypted.
 
 ## How do you use
 
