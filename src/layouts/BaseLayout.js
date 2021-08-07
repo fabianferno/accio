@@ -22,7 +22,7 @@ export default function BaseLayout(props) {
       </section>
       <div
         style={{ minHeight: "90vh" }}
-        className="d-flex justify-content-center align-items-center mt-md-0 mt-5"
+        className="d-flex justify-content-center align-items-center mt-md-0 mt-5 pt-5 pb-5"
       >
         {props.children}
       </div>

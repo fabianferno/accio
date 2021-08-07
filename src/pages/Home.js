@@ -352,8 +352,9 @@ const Home = ({ user }) => {
           />
         </div>
       </div>
-
-      <div className={"d-flex flex-column  p-4"}>
+      <hr className="mt-3 mb-2" />
+      <div className={"d-flex flex-column mt-5"}>
+        <h2 className="text-center">Your Secrets</h2>
         <div className={`d-flex`}>
           {creds.length ? (
             <ResponsiveMasonry columnsCount={3} className="container">
