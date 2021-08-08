@@ -60,7 +60,7 @@
 
 [![Supabase](https://supabase.io/new/brand-assets/logo-preview.jpg "Supabase")](https://supabase.io/ "Supabase")
 
-- **This app was built for the "Supabase Hackathon."  We built this in a day. Please show your support by starring our repository.**
+- **This app was built for the "Supabase Hackathon.". Sadly we came to know about this Hackathon only on a day before the submission deadline. We thought we'll give this a try. We built this in a day. Please show your support by starring our repository.**
 
 ##### The Team
 
