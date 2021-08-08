@@ -1,4 +1,6 @@
 @use "sass:map";
+
+
 /* make the customizations */
 $theme-colors: ("primary": #da4a56,
   "dark": #282828,
@@ -124,4 +126,11 @@ img.dark-shadow {
   outline: none !important;
   border: 6px solid map.get($theme-colors, "primary");
   box-shadow: 0 0 10px #000000;
+}
+
+.logo-auth {
+  font-size: 9rem;
+  font-weight: bold;
+  text-shadow: 3px 3px 0px #000000;
+  color: map.get($theme-colors, "primary");
 }

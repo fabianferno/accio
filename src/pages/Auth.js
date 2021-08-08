@@ -60,12 +60,7 @@ const Auth = () => {
       className="d-flex justify-content-center align-items-center text-center"
     >
       <form className="container">
-        <h1
-          className="font-weight-bold text-primary pt-5"
-          style={{ fontSize: "8rem", fontWeight: "bold" }}
-        >
-          accio
-        </h1>
+        <h1 className="pt-5 logo-auth">accio</h1>
 
         <h5 className="mb-5 mt-3">
           a <strong>developer</strong> friendly credential manager.
@@ -156,12 +151,12 @@ const Auth = () => {
           </div>
         )}
         <hr className="mt-5 " />
-        <span className="text-center texh-white mt-3">
-          Developed by{" "}
+        <span className="text-center texh-white my-3 pb-3">
+          Developed by <br />
           <a className="text-primary" href="https://github.com/fabianferno">
             Fabian Ferno
           </a>{" "}
-          and{" "}
+          &{" "}
           <a className="text-primary" href="https://github.com/Joshuafrankle">
             Joshua Frankle
           </a>

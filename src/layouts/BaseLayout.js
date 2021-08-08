@@ -33,7 +33,7 @@ export default function BaseLayout(props) {
           <a className="text-primary" href="https://github.com/fabianferno">
             Fabian Ferno
           </a>{" "}
-          and{" "}
+          &{" "}
           <a className="text-primary" href="https://github.com/Joshuafrankle">
             Joshua Frankle
           </a>

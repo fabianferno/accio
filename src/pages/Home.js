@@ -274,7 +274,7 @@ const Home = ({ user }) => {
   ) : (
     <div className={" flex-column "}>
       <ShareModal />
-      <div className="card card-body bg-secondary shadow radify ">
+      <div className="container card card-body bg-secondary shadow radify ">
         <div className={"d-block d-md-flex justify-content-center "}>
           <motion.input
             style={{ width: "100%" }}
