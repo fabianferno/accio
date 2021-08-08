@@ -10,7 +10,11 @@
 
 ----
 
-<img src="https://i.ibb.co/mJ5fznc/image.png"/>
+<img src="https://i.ibb.co/SQT836Q/image.png" alt="image" border="0" />
+
+<br/><br/>
+
+----
 
 ## How to use?
 
@@ -45,6 +49,8 @@
 - The cred is outdated or invalid? Feel free to delete those with the delete cred button.
 
 <img src="https://i.ibb.co/Wn4VsJc/image.png" alt="image" border="0" />
+
+<br/><br/>
 
 ----
 
