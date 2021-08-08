@@ -45,8 +45,7 @@
 
 <img src="https://i.ibb.co/NsN2hFk/image.png" alt="image" border="0" />
 
-###### Snappy search bar to find those cred quickly<br/>
-- The cred is outdated or invalid? Feel free to delete those with the delete cred button.
+## A snappy search to find those creds quickly<br/>
 
 <img src="https://i.ibb.co/Wn4VsJc/image.png" alt="image" border="0" />
 
