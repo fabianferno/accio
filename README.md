@@ -62,6 +62,11 @@
 
 - **This app was built for the "Supabase Hackathon."  We built this in a day. Please show your support by starring our repository.**
 
+##### The Team
+
+* **@fabianferno** - [Twitter](https://twitter.com/FabianFerno), [GitHub](https://github.com/fabianferno)
+* **@Joshuafrankle** - [Twitter](https://twitter.com/JoshuaFrankle), [GitHub](https://github.com/Joshuafrankle)
+
 
 
 
