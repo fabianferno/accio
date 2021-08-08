@@ -6,7 +6,7 @@ import { encryptJSON, decryptJSON } from "../lib/utilities";
 import { motion } from "framer-motion";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import { sendMail } from "../lib/sendinblue";
+// import { sendMail } from "../lib/sendinblue";
 
 import { Button, Modal } from "react-bootstrap";
 
@@ -215,11 +215,15 @@ const Home = ({ user }) => {
     const handleClose = () => setShowShareModal(false);
 
     const handleShare = () => {
-      sendMail(
-        emailTextRef.current.value.trim(),
-        nameTextRef.current.value,
-        shareCredential
-      );
+      // sendMail(
+      //   emailTextRef.current.value.trim(),
+      //   nameTextRef.current.value,
+      //   shareCredential
+      // );
+
+      window.location.href = `mailto:${emailTextRef.current.value.trim()}?subject=ACCIO%20-%20${
+        supabase.auth.user().email
+      }%20Shared%20a%20cred.&body=${JSON.stringify(shareCredential)}`;
     };
 
     return (
