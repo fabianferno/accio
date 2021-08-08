@@ -1,39 +1,73 @@
-# Accio
+----
+<img src="https://i.ibb.co/6yxP11B/image.png"/>
 
-- As technology advances, we will require more servers to operate our web applications. It's acceptable to remember one server cred, but remembering thousands isn't
-- We present [Accio](https://accio.fabianferno.tech) to you,  a web app that allows you to save and share thousands of server credentials with a single click. There's no need to be concerned about data leaks because the credentials are encrypted.
+### Keep forgetting those SSH, FTP and SQL credentials now and then?
+##  Suffer no more. **ACCIO** to the rescue. 
+###### [**ACCIO**](https://accio.fabianferno.tech) is a web app that allows you to save, manage and share thousands of server credentials with a single click. Our simple and snappy UI makes it easy for you to store those ssh, db, ftp credentials.
 
-## How do you use
 
-- With our minimal UI, using Accio is a piece of cake. You can choose your mode of login either via email-passwsord/SSO
-- After logging in, you'll be prompted to provide your server credentials in input fields
-- Fill them, click submit and voila! Your cred is saved, easy-peasy right
+<br/><br/>
 
-## Editing & sharing
+----
 
-### Uh oh! I entered a wrong ssh passoword<br/>
-<img src="https://countdown-liard.vercel.app/images/ss2.png" height="=300px" width="300px" /> <br/>
+<img src="https://i.ibb.co/SQT836Q/image.png" alt="image" border="0" />
+
+<br/><br/>
+
+----
+
+## How to use?
+
+- Using [**ACCIO**](https://accio.fabianferno.tech) is a piece of cake. 
+- Sign in using your email or OAuth (Google, GitHub, Discord).
+
+<img src="https://i.ibb.co/KKsf59y/image.png" alt="image" border="0" />
+
+
+##### Just enter your server credentials & store them to your account. Easy, right?
+
+<img src="https://i.ibb.co/yV0Wpdj/Screenshot-2021-08-08-175501.png" height="=300px" width="300px" /> <br/>
+
+###### Uh Oh! I entered a wrong password<br/>
 - No worries, see the edit icon at top right of the card, click it
-- Edit them in the input fields, click submit and... done
+- ACCIO is more. You can edit or delete your credentials over the cred card you find in your account. 
 
-### I feel like sharing my creds to a co developer<br/>
-<img src="https://countdown-liard.vercel.app/images/ss1.png" height="=300px" width="300px" /> <br/>
-- We got you, See the share icon at top right of the card, click it
+---
+
+###### I feel like sharing my creds to a co developer<br/>
+- Guess, what? You can share them too. Clicking the share button let's you email the server credentials in a single click.
 - Provide the recipient's email and name, click submit and... done
 
-### This server cred is Reduntant<br/>
-<img src="https://countdown-liard.vercel.app/images/ss3.png" height="=300px" width="300px" /> <br/>
-- As developers we know redundance is inevitable
-- Click the delete icon and the creds will be removed
+---
 
-## Services that we used
+###### This server cred is invalid<br/>
+- The cred is outdated or invalid? Feel free to delete those with the delete cred button.
 
-### Supabase
-- Spabase was our go to build this app
-- It automatically creates a database record, which is super cool!
-- We can also create database rules
-- Working with database is much easier
-- It also automatically generates boilerplat, which made our job easy
+<img src="https://i.ibb.co/NsN2hFk/image.png" alt="image" border="0" />
 
-For the [backend](https://github.com/fabianferno/accio-be) - Flask, Supabase <br/>
-For the frontend - ReactJs
+###### Snappy search bar to find those cred quickly<br/>
+- The cred is outdated or invalid? Feel free to delete those with the delete cred button.
+
+<img src="https://i.ibb.co/Wn4VsJc/image.png" alt="image" border="0" />
+
+<br/><br/>
+
+----
+
+## How it works?
+#### 
+- **[Supabase](https://supabase.io/ "Supabase")** - Complete authentication with OAuth - Google, GitHub, Discord. PostgresSQL for storing encrypted credentials.
+
+[![Supabase](https://supabase.io/new/brand-assets/logo-preview.jpg "Supabase")](https://supabase.io/ "Supabase")
+
+- **This app was built for the "Supabase Hackathon."  We built this in a day. Please show your support by starring our repository.**
+
+
+
+
+###### Other technologies used -  [ Python Flask for Backend Mail Server](https://github.com/fabianferno/accio-be), ReactJS, SaSS, Bootstrap, CryptJS.
+
+
+##### Star our repo to get updates. We built this app in a day for a [hackathon](https://supabase.io/blog/2021/07/30/1-the-supabase-hackathon "hackathon"). We will be releasing new features soon. 
+
+#### Show your support 💌
