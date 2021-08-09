@@ -19,6 +19,8 @@ $theme-colors: ("primary": #da4a56,
 
 @import url("../fonts/fonts.css");
 
+@import "scrollbar.scss";
+
 * {
   box-sizing: border-box;
 }

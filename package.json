@@ -2,13 +2,18 @@
   "name": "accio",
   "version": "0.1.0",
   "private": true,
+  "main": "public/electron.js",
   "dependencies": {
     "@supabase/supabase-js": "^1.21.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^5.1.0",
+    "concurrently": "^6.2.1",
     "crypto-js": "^4.1.1",
+    "electron": "^13.1.8",
+    "electron-builder": "^22.11.7",
+    "electron-is-dev": "^2.0.0",
     "framer-motion": "^4.1.17",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
@@ -20,13 +25,17 @@
     "react-social-icons": "^5.5.1",
     "sass": "^1.37.5",
     "sib-api-v3-sdk": "^8.2.1",
+    "wait-on": "^6.0.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "npm build --em.main=build/electron.js",
+    "preelectron-pack": "npm run-script build"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +54,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "build": {
+    "appId": "com.example.accio",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "author": "Fabian Ferno",
+  "homepage": "./"
 }
