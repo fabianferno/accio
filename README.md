@@ -55,7 +55,7 @@
 
 ## How it works?
 #### 
-- **[Supabase](https://supabase.io/ "Supabase")** - Complete authentication with OAuth - Google, GitHub, Discord. PostgresSQL for storing encrypted credentials.
+- **[Supabase](https://supabase.io/ "Supabase")** - Complete authentication with OAuth - Google, GitHub, Discord. PostgreSQL for storing encrypted credentials.
 
 [![Supabase](https://supabase.io/new/brand-assets/logo-preview.jpg "Supabase")](https://supabase.io/ "Supabase")
 
